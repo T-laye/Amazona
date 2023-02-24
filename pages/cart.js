@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { XCircleIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import React, { useContext } from 'react';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 function CartScreen() {
-  // const router = useRouter();
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
 
   const {
@@ -97,7 +97,7 @@ function CartScreen() {
               </li>
               <li>
                 <button
-                  // onClick={router.push('/shipping')}
+                  onClick={router.push('login?redirect=/shipping')}
                   className="w-full primary-button"
                 >
                   Check Out
