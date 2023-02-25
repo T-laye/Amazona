@@ -4,8 +4,10 @@ import { Store } from '@/utils/store';
 import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 export default function ShippingScreen() {
+  const router = useRouter();
   const {
     handleSubmit,
     register,
@@ -50,6 +52,8 @@ export default function ShippingScreen() {
         },
       })
     );
+
+    router.push('/payment');
   };
   return (
     <Layout title="Shipping Address">
@@ -142,3 +146,5 @@ export default function ShippingScreen() {
     </Layout>
   );
 }
+
+// ShippingScreen.auth = true;
