@@ -24,6 +24,12 @@ function CartScreen() {
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
   };
 
+  // const redirect = router.push('login?redirect=/shipping');
+
+  const redirect = () => {
+    router.push(`/shipping`);
+  };
+
   return (
     <Layout title={'Shopping Cart'}>
       <h1 className="mb-4 text-xl">Shopping Cart</h1>
@@ -96,10 +102,7 @@ function CartScreen() {
                 </div>
               </li>
               <li>
-                <button
-                  onClick={router.push('login?redirect=/shipping')}
-                  className="w-full primary-button"
-                >
+                <button onClick={redirect} className="w-full primary-button">
                   Check Out
                 </button>
               </li>
