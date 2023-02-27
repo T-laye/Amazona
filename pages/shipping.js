@@ -147,4 +147,4 @@ export default function ShippingScreen() {
   );
 }
 
-// ShippingScreen.auth = true;
+ShippingScreen.auth = true;

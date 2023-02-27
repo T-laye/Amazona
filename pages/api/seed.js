@@ -3,7 +3,7 @@ import data from '@/utils/data';
 import User from '../../models/User';
 import db from '../../utils/db';
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   await db.connect();
   await User.deleteMany();
   await User.insertMany(data.users);
@@ -11,4 +11,6 @@ export default async function handler(req, res) {
   await Product.insertMany(data.products);
   await db.disconnect();
   res.send({ message: 'seed successfully' });
-}
+};
+
+export default handler;

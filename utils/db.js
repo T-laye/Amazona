@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const connection = {};
 
 async function connect() {
+  console.log('trying to connect to db');
   if (connection.isConnected) {
     console.log('already connected');
     return;
@@ -30,6 +31,28 @@ async function disconnect() {
   }
 }
 
-const db = { connect, disconnect };
+function convertDocToObj(doc) {
+  doc._id = doc._id.toString();
+  doc.createdAt = doc.createdAt.toString();
+  doc.updatedAt = doc.updatedAt.toString();
+  return doc;
+}
+
+const db = { connect, disconnect, convertDocToObj };
 
 export default db;
+
+// const mongoose = require('mongoose');
+
+// module.exports = () => {
+//   const databaseParams = {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   };
+//   try {
+//     mongoose.connect(process.env.MONGODB_URI, databaseParams);
+//     console.log('it worked');
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
